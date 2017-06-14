@@ -94,16 +94,22 @@ class Game extends React.Component {
             const desc = move ?
                 'Move #' + step.coord :
                 'Game start';
-            const lastMove = move == history.length -1;
-            console.log(lastMove);
-            return (
-                <li key={move}>
-                    <a href="#" onClick={() => this.jumpTo(move)}>{lastMove}</a>
-                </li>
-            );
+            const lastMove = move === history.length -1;
+            if (lastMove) {
+                return (
+                    <li key={move}>
+                        <a href="#" onClick={() => this.jumpTo(move)}><strong>{desc}</strong></a>
+                    </li>
+                );
+            }
+            else {
+                return (
+                    <li key={move}>
+                        <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+                    </li>
+                );
+            }
         });
-
-        const squares = history.map(square => square.value)
 
         let status;
         if (winner) {

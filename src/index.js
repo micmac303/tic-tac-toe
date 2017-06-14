@@ -95,6 +95,7 @@ class Game extends React.Component {
                 'Move #' + step.coord :
                 'Game start';
             const lastMove = move === history.length -1;
+
             if (lastMove) {
                 return (
                     <li key={move}>
